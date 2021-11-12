@@ -230,12 +230,12 @@ func UnZip(file []byte) (map[string][]byte, error) {
 		if err != nil {
 			return nil, err
 		}
-		defer f.Close()
 		contentBytes, err := ioutil.ReadAll(f)
 		if err != nil {
 			return nil, err
 		}
 		result[contentFile.Name] = contentBytes
+		f.Close()
 	}
 	return result, nil
 }
